@@ -101,8 +101,10 @@ find_package(Gnuradio "3.7" REQUIRED PATHS ${CMAKE_INSTALL_PREFIX} ${GNURADIO_MO
 if(NOT GNURADIO_RUNTIME_FOUND)
     message(FATAL_ERROR "GnuRadio Runtime required to compile display")
 endif()
-find_package(Qt4 REQUIRED )
-include(${QT_USE_FILE})
+find_package(Qt5Widgets REQUIRED)
+set(QT_FOUND ${Qt5Widgets_FOUND})
+set(QT_LIBRARIES ${Qt5Widgets_LIBRARIES})
+set(QT_INCLUDE_DIRS ${Qt5Widgets_INCLUDE_DIRS})
 find_package(PythonLibs 2)
 find_package(SWIG)
 
@@ -114,7 +116,7 @@ find_package(Doxygen)
 
 
 include(GrPython)
-GR_PYTHON_CHECK_MODULE("PyQt4" PyQt4 True PYQT4_FOUND)
+GR_PYTHON_CHECK_MODULE("PyQt5" PyQt5 True PYQT5_FOUND)
 
 ########################################################################
 #
